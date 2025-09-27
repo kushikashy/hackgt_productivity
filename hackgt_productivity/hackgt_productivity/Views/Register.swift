@@ -93,7 +93,7 @@ struct Register: View {
             }.padding(.top, 200)
 
                 
-                NavigationLink(destination: DashboardNew().navigationBarBackButtonHidden(true), isActive: $navigateToDashboard) {
+                NavigationLink(destination: DashboardNew(viewModel: RegistrationViewModel()).navigationBarBackButtonHidden(true), isActive: $navigateToDashboard) {
                     EmptyView()
                 }
             }

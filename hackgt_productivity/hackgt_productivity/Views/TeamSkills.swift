@@ -19,6 +19,8 @@ struct TeamSkills: View {
     @State private var teammateTwoS: Set<String> = []
     @State private var teammateThreeL: Set<String> = []
     @State private var teammateThreeS: Set<String> = []
+    
+    @ObservedObject var viewModel: RegistrationViewModel
     var body: some View {
         Text("Team Skills")
             .font(.largeTitle)
@@ -316,7 +318,7 @@ struct TeamSkills: View {
             }
         }
         Spacer()
-        NavigationLink(destination: projectDetails()) {
+        NavigationLink(destination: projectDetails(viewModel: viewModel)) {
                             Text("Next")
                                 .font(.headline)
                                 .foregroundColor(.white)
@@ -328,5 +330,5 @@ struct TeamSkills: View {
 }
 
 #Preview {
-    TeamSkills()
+    TeamSkills(viewModel: RegistrationViewModel())
 }

@@ -173,6 +173,7 @@ struct UserModel: Identifiable, Hashable {
 }
 
 struct projectDetails: View {
+    
     @State private var projectName: String = ""
     @State private var selectedProject: String = "Web App"
     let projectOptions = ["Web App", "Mobile App", "AI/Data Science", "Hardware/IoT", "FinTech/Blockchain", "Web3"]
@@ -180,6 +181,7 @@ struct projectDetails: View {
     @State private var projectFeatures: String = "Enter features"
     @State private var endDate = Date()
     
+    @ObservedObject var viewModel: RegistrationViewModel
 
     var body: some View {
         NavigationView {
@@ -249,8 +251,14 @@ struct projectDetails: View {
                                     .background(Color.blue)
                                     .foregroundColor(.white)
                                     .cornerRadius(10)
-                            }
-                            .padding(.top, 20)
+                            }.padding(.top, 20)
+                            .simultaneousGesture(TapGesture().onEnded {
+                                    viewModel.projectName = projectName
+                                    viewModel.projectType = selectedProject
+                                    viewModel.projectFeatures = projectFeatures
+                                    viewModel.endDate = endDate
+                                    viewModel.saveJSONLocally()
+                                })
                     }
                     .padding(.bottom, 100)
                 }
@@ -262,5 +270,5 @@ struct projectDetails: View {
 
 // SwiftUI preview
 #Preview {
-    projectDetails()
+    projectDetails(viewModel: RegistrationViewModel())
 }

@@ -56,7 +56,7 @@ struct Dashboard: View {
     @Binding var endDate: Date
     @State private var name: String = "No name set"
     @State private var authVM = AuthenticationVM()
-    
+
     // Example tasks array
     @State private var tasks: [String] = [
         "Buy groceries",
@@ -121,13 +121,16 @@ struct Dashboard: View {
                 Spacer()
                 
                 // End Project button
-                NavigationLink(destination: DashboardNew()) {
+                NavigationLink(destination: DashboardNew(viewModel: RegistrationViewModel())) {
                     Label("End Project", systemImage: "flag.fill")
                         .font(.headline)
                         .foregroundColor(Color.accent)
                         .padding()
                         .background(Color.ourPink)
                         .cornerRadius(10)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            FileHelper.deleteJSONFile() // ✅ now it only runs when tapped
+                        })
                 }
                 .padding(.top, 20)
                 .frame(maxWidth: .infinity, alignment: .center)
