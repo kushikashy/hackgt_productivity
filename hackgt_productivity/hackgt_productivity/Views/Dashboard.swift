@@ -133,7 +133,7 @@ struct Dashboard: View {
             if let user = Auth.auth().currentUser {
                 name = user.displayName ?? "No name set"
             }
-        }
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

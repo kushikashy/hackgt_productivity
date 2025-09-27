@@ -44,9 +44,10 @@ struct Tasks: View {
                 tasks: allTasks,
                 isExpanded: $isAllTasksExpanded
             )
+            Spacer()
         }
         .padding()
-        Spacer()
+//        Spacer()
     }
     
     // Reusable collapsible section

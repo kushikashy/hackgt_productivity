@@ -1,3 +1,10 @@
+//
+//  projectDetails.swift
+//  hackgt_productivity
+//
+//  Created by Aditi Deshmukh on 9/26/25.
+//
+
 import SwiftUI
 import FirebaseFirestore
 
@@ -33,14 +40,13 @@ struct projectDetails: View {
             HStack {
                 Text("Project Type: ")
                     .font(.headline)
-                    .padding(.leading, 35)
-                    .padding(.trailing, 50)
+                    .padding(.leading, 9)
+//                    .padding(.trailing, 50)
                 Picker("Select type", selection: $selectedProject) {
-                    ForEach(projectOptions, id: \.self) { type in Text(type) }
-                }.padding(.trailing, 200)
-            }
-            
-            VStack(alignment: .leading, spacing: 15) {
+                    ForEach(projectOptions, id: \.self) { type in Text(type)}
+                }.padding(.leading).pickerStyle(.menu)
+            }.padding(.trailing, 100)
+            VStack {
                 Text("Add your project features below:")
                     .font(.headline)
                     .padding(.leading, 35)
@@ -99,6 +105,20 @@ struct projectDetails: View {
                         .font(.headline)
                     DatePicker(
                         "", selection: $endDate, displayedComponents: [.date, .hourAndMinute]
+//                     ).frame(alignment:.leading).padding(.trailing, 90)
+//                 }.padding(.bottom, 200)
+//                 NavigationView {
+//                     NavigationLink(destination: Dashboard()) {
+//                                             Text("Create New Project")
+//                                                 .font(.headline)
+//                                                 .padding()
+//                                                 .background(Color.blue)
+//                                                 .foregroundColor(.white)
+//                                                 .cornerRadius(10)
+//                                         }
+//                 }
+//             }
+//         }.frame(maxWidth: .infinity, maxHeight: .infinity)
                     ).frame(alignment:.leading).padding(.trailing, 80)
                 }.padding(.bottom, 100)
             }
@@ -106,6 +126,18 @@ struct projectDetails: View {
         .onAppear {
             fetchUsers()
         }
+        NavigationView {
+                    NavigationLink(destination: Dashboard()) {
+                                            Text("Create New Project")
+                                                .font(.headline)
+                                                .padding()
+                                                .background(Color.blue)
+                                                .foregroundColor(.white)
+                                                .cornerRadius(10)
+                                        }
+                }
+            }
+        }.frame(maxWidth: .infinity, maxHeight: .infinity)
         Spacer()
     }
     
