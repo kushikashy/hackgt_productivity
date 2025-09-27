@@ -194,10 +194,9 @@ struct projectDetails: View {
                                 .padding(.leading, 35)
                                 .padding(.trailing, 10)
                                 .foregroundStyle(Color.accent)
-                            TextField(" Project Name", text: $projectName)
-                                .background(Color.primaryText)
-                                .cornerRadius(5)
-                                .foregroundColor(.accent)
+                            TextField("Enter name", text: $projectName)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .frame(maxWidth: 200)
                         }.padding(.top, 60)
                         
                         // Project Type
@@ -221,6 +220,7 @@ struct projectDetails: View {
                             Text("Add your project features below:")
                                 .font(.headline)
                                 .frame(maxWidth: .infinity, alignment: .center)
+                                .foregroundStyle(Color.accent)
                             TextEditor(text: $projectFeatures)
                                 .frame(width: 344, height: 200)
                                 .foregroundStyle(.gray)
@@ -235,9 +235,16 @@ struct projectDetails: View {
                         VStack {
                             Text("Select Hack End Date")
                                 .font(.headline)
-                            DatePicker("", selection: $endDate, displayedComponents: [.date, .hourAndMinute])
-                                .frame(alignment: .leading)
-                                .padding(.trailing, 80)
+                                .foregroundStyle(Color.accent)
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 8)
+                                            .fill(Color.accent.opacity(1))
+                                            .frame(width: 200, height: 32)
+                                DatePicker("", selection: $endDate, displayedComponents: [.date, .hourAndMinute])
+                                    .labelsHidden()
+                                    .foregroundStyle(.accent)
+                                    .tint(.primaryText)
+                            }
                         }
                         
                         // Create Project Button
@@ -246,8 +253,8 @@ struct projectDetails: View {
                                 Text("Create New Project")
                                     .font(.headline)
                                     .padding()
-                                    .background(Color.blue)
-                                    .foregroundColor(.white)
+                                    .background(Color.primaryText)
+                                    .foregroundColor(.accent)
                                     .cornerRadius(10)
                             }
                             .padding(.top, 20)

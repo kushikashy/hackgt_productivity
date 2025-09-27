@@ -56,6 +56,7 @@ struct Dashboard: View {
     @Binding var endDate: Date
     @State private var name: String = "No name set"
     @State private var authVM = AuthenticationVM()
+    @State private var role: String = "No role set"
     
     // Example tasks array
     @State private var tasks: [String] = [
@@ -78,6 +79,10 @@ struct Dashboard: View {
                     .bold()
                     .padding(.leading, 10)
                     .foregroundStyle(Color.accent)
+                Text("\(role)")
+                    .font(.title)
+                    .foregroundStyle(Color.accent)
+                    .padding(.leading, 10)
                 
                 // Countdown
                 RoundedRectangle(cornerRadius: 20)
