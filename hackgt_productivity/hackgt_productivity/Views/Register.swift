@@ -77,13 +77,25 @@ struct Register: View {
                     //                }
                     
                     Button("Register") {
-                        authVM.register(email: email, password: password, name: name)
+                        // Send selectedSkills to your VM if needed
+                        authVM.register(email: email, password: password, name: name, skills: Array(selectedSkills))
                         navigateToDashboard = true
                     }
                     
-                    NavigationLink(destination: DashboardNew().navigationBarBackButtonHidden(true), isActive: $navigateToDashboard) {
-                        EmptyView()
-                    }
+//                     NavigationStack {
+//                         EmptyView()
+//                             .navigationDestination(isPresented: $navigateToDashboard) {
+//                                 DashboardNew()
+//                             }
+//                     }
+//                 }
+
+                .padding()
+            }.padding(.top, 200)
+
+                
+                NavigationLink(destination: DashboardNew().navigationBarBackButtonHidden(true), isActive: $navigateToDashboard) {
+                    EmptyView()
                 }
                 .padding()
             }
