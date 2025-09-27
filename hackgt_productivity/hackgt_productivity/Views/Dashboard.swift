@@ -111,11 +111,9 @@ struct Dashboard: View {
                         .padding(.bottom, 10)
                 )
             }
-            
             Spacer()
-            
             // End Project button
-            NavigationLink(destination: DashboardNew()) {
+            NavigationLink(destination: DashboardNew().navigationBarBackButtonHidden(true)) {
                 Label("End Project", systemImage: "flag.fill")
                     .font(.headline)
                     .foregroundColor(.white)
@@ -124,8 +122,7 @@ struct Dashboard: View {
                     .cornerRadius(10)
             }
             .padding(.top, 20)
-            
-            Spacer()
+            .frame(maxWidth: .infinity, alignment: .center)
         }
         .padding()
         .onAppear {

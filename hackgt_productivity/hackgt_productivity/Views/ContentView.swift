@@ -7,41 +7,41 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
-//        VStack {
-//            TabView {
-//                Features()
-//                    .tabItem {
-//                        Label("Features", systemImage: "list.triangle")
-//                    }
-//                Dashboard()
-//                    .tabItem {
-//                        Label("Dashboard", systemImage: "house")
-//                    }
-//                Tasks()
-//                    .tabItem {
-//                        Label("Tasks", systemImage:"list.bullet.clipboard")
-//                    }
-//            }
+//struct ContentView: View {
+//    var body: some View {
+////        VStack {
+////            TabView {
+////                Features()
+////                    .tabItem {
+////                        Label("Features", systemImage: "list.triangle")
+////                    }
+////                Dashboard()
+////                    .tabItem {
+////                        Label("Dashboard", systemImage: "house")
+////                    }
+////                Tasks()
+////                    .tabItem {
+////                        Label("Tasks", systemImage:"list.bullet.clipboard")
+////                    }
+////            }
+////        }
+//        TabView {
+//            Features()
+//                .tabItem {
+//                    Label("Features", systemImage: "list.triangle")
+//                }
+//            Dashboard()
+//                .tabItem {
+//                    Label("Dashboard", systemImage: "house")
+//                }
+//            Tasks()
+//                .tabItem {
+//                    Label("Tasks", systemImage:"list.bullet.clipboard")
+//                }
 //        }
-        TabView {
-            Features()
-                .tabItem {
-                    Label("Features", systemImage: "list.triangle")
-                }
-            Dashboard()
-                .tabItem {
-                    Label("Dashboard", systemImage: "house")
-                }
-            Tasks()
-                .tabItem {
-                    Label("Tasks", systemImage:"list.bullet.clipboard")
-                }
-        }
-    }
-}
-
-#Preview {
-    ContentView()
-}
+//    }
+//}
+//
+//#Preview {
+//    ContentView()
+//}
