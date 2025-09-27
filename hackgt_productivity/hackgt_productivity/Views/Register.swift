@@ -80,7 +80,7 @@ struct Register: View {
                     navigateToDashboard = true
                 }
                 
-                NavigationLink(destination: DashboardNew(), isActive: $navigateToDashboard) {
+                NavigationLink(destination: DashboardNew().navigationBarBackButtonHidden(true), isActive: $navigateToDashboard) {
                     EmptyView()
                 }
             }
