@@ -21,14 +21,14 @@ struct DashboardNew: View {
                         .padding([.leading], 10)
                         .padding(.bottom, 5)
                         .bold()
-//                    NavigationLink(destination: projectDetails()) {
-//                                        Label("Add Project", systemImage: "plus")
-//                                            .font(.headline)
-//                                            .foregroundColor(.white)
-//                                            .padding()
-//                                            .background(Color.blue)
-//                                            .cornerRadius(10)
-//                                    }
+                    NavigationLink(destination: projectDetails()) {
+                                        Label("Add Project", systemImage: "plus")
+                                            .font(.headline)
+                                            .foregroundColor(.white)
+                                            .padding()
+                                            .background(Color.blue)
+                                            .cornerRadius(10)
+                                    }
                 }
                 Spacer()
             }

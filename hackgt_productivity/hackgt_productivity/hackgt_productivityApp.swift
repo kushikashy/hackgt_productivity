@@ -20,15 +20,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct YourApp: App {
+    @StateObject var authVM = AuthenticationVM()
   // register app delegate for Firebase setup
-  @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
 
   var body: some Scene {
-    WindowGroup {
-      NavigationView {
-        ContentView()
+      WindowGroup {
+          NavigationStack {
+              Register()
+                  .environmentObject(authVM)
+          }
       }
-    }
   }
 }
