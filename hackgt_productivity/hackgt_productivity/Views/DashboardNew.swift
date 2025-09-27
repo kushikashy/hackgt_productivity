@@ -12,30 +12,33 @@ struct DashboardNew: View {
     @State private var authVM = AuthenticationVM()
     
     var body: some View {
-        VStack {
             NavigationStack {
-                VStack {
-                    Text(name == "No name set" ? "Dashboard" : "\(name)'s Dashboard")
-                        .font(.largeTitle)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding([.leading], 10)
-                        .padding(.bottom, 5)
-                        .bold()
-                    NavigationLink(destination: projectDetails()) {
-                                        Label("Add Project", systemImage: "plus")
-                                            .font(.headline)
-                                            .foregroundColor(.white)
-                                            .padding()
-                                            .background(Color.blue)
-                                            .cornerRadius(10)
-                                    }
+                ZStack {
+                    Color.primaryBackground.ignoresSafeArea()
+                    VStack {
+                        Text(name == "No name set" ? "Dashboard" : "\(name)'s Dashboard")
+                            .font(.largeTitle)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding([.leading], 10)
+                            .padding(.bottom, 5)
+                            .bold()
+                            .foregroundStyle(Color.accent)
+                        
+                        NavigationLink(destination: TeamSkills()) {
+                            Label("Add Project", systemImage: "plus")
+                                .font(.headline)
+                                .foregroundColor(.accent)
+                                .padding()
+                                .background(Color.primaryText)
+                                .cornerRadius(10)
+                        }
+                        
+                        Spacer() // put Spacer *inside* VStack to push content up
+                    }
+                    .padding()
                 }
-                Spacer()
             }
         }
-        .padding()
-        Spacer()
-    }
 }
 
 #Preview {

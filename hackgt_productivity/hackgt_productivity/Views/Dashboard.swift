@@ -69,71 +69,77 @@ struct Dashboard: View {
     ]
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            // Title
-            Text(name == "No name set" ? "Dashboard" : "\(name)'s Dashboard")
-                .font(.largeTitle)
-                .bold()
-                .padding(.leading, 10)
-            
-            // Countdown
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.gray.opacity(0.2))
-                .frame(width: 380, height: 65)
-                .overlay(
-                    CountdownView(targetDate: endDate)
-                )
-            
-            // Tasks
-            ZStack {
+        ZStack {
+            Color.primaryBackground.edgesIgnoringSafeArea(.all)
+            VStack(alignment: .leading, spacing: 20) {
+                // Title
+                Text(name == "No name set" ? "Dashboard" : "\(name)'s Dashboard")
+                    .font(.largeTitle)
+                    .bold()
+                    .padding(.leading, 10)
+                    .foregroundStyle(Color.accent)
+                
+                // Countdown
                 RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.gray.opacity(0.2))
-                    .frame(width: 380, height: 200)
-                    .overlay (
-                        VStack(alignment: .leading, spacing: 10) {
-                            Text("My Tasks")
-                                .font(.title2)
-                                .bold()
-                                .padding(.top, 10)
-                                .padding(.leading, 15)
-                            
-                            ScrollView(.vertical, showsIndicators: true) {
-                                VStack(alignment: .leading, spacing: 5) {
-                                    ForEach(tasks, id: \.self) { task in
-                                        Text("• \(task)")
-                                            .padding(.leading, 15)
-                                            .font(.title3)
+                    .fill(Color.primaryText.opacity(0.5))
+                    .frame(width: 380, height: 65)
+                    .overlay(
+                        CountdownView(targetDate: endDate)
+                            .foregroundStyle(Color.accent)
+                    )
+                
+                // Tasks
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.primaryText.opacity(0.5))
+                        .frame(width: 380, height: 200)
+                        .overlay (
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text("My Tasks")
+                                    .font(.title2)
+                                    .bold()
+                                    .padding(.top, 10)
+                                    .padding(.leading, 15)
+                                    .foregroundStyle(Color.accent)
+                                
+                                ScrollView(.vertical, showsIndicators: true) {
+                                    VStack(alignment: .leading, spacing: 5) {
+                                        ForEach(tasks, id: \.self) { task in
+                                            Text("• \(task)")
+                                                .padding(.leading, 15)
+                                                .font(.title3)
+                                                .foregroundStyle(Color.accent)
+                                        }
                                     }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                                 }
-                                .frame(maxWidth: .infinity, alignment: .leading)
                             }
-                        }
-                        .padding(.bottom, 10)
-                )
+                                .padding(.bottom, 10)
+                        )
+                }
+                
+                Spacer()
+                
+                // End Project button
+                NavigationLink(destination: DashboardNew()) {
+                    Label("End Project", systemImage: "flag.fill")
+                        .font(.headline)
+                        .foregroundColor(Color.accent)
+                        .padding()
+                        .background(Color.ourPink)
+                        .cornerRadius(10)
+                }
+                .padding(.top, 20)
+                .frame(maxWidth: .infinity, alignment: .center)
             }
-            
-            Spacer()
-            
-            // End Project button
-            NavigationLink(destination: DashboardNew()) {
-                Label("End Project", systemImage: "flag.fill")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
-            }
-            .padding(.top, 20)
-            
-            Spacer()
+            .padding()
+            .onAppear {
+                // Safe unwrap of user display name
+                if let user = Auth.auth().currentUser {
+                    name = user.displayName ?? "No name set"
+                }
+            }.frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .padding()
-        .onAppear {
-            // Safe unwrap of user display name
-            if let user = Auth.auth().currentUser {
-                name = user.displayName ?? "No name set"
-            }
-        }.frame(maxWidth: .infinity, maxHeight: .infinity)
         
         
     }
