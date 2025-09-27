@@ -4,7 +4,7 @@
 //
 //  Created by Kushi Kashyap on 9/26/25.
 //
-import FirebaseAuth
+@preconcurrency import FirebaseAuth
 import FirebaseFirestore
 import Observation
 
