@@ -29,24 +29,33 @@ struct Tasks: View {
     @State private var isAllTasksExpanded: Bool = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            
-            // MARK: My Tasks
-            collapsibleSection(
-                title: "My Tasks",
-                tasks: myTasks,
-                isExpanded: $isMyTasksExpanded
-            )
-            
-            // MARK: All Tasks
-            collapsibleSection(
-                title: "All Tasks",
-                tasks: allTasks,
-                isExpanded: $isAllTasksExpanded
-            )
-            Spacer()
+        ZStack {
+            Color.primaryBackground.ignoresSafeArea()
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Tasks")
+                    .font(.largeTitle)
+                    .bold()
+                    .padding(.leading, 10)
+                    .foregroundStyle(Color.accent)
+                // MARK: My Tasks
+                collapsibleSection(
+                    title: "My Tasks",
+                    tasks: myTasks,
+                    isExpanded: $isMyTasksExpanded
+                )
+                .foregroundStyle(Color.accent)
+                
+                // MARK: All Tasks
+                collapsibleSection(
+                    title: "All Tasks",
+                    tasks: allTasks,
+                    isExpanded: $isAllTasksExpanded
+                )
+                .foregroundStyle(Color.accent)
+                Spacer()
+            }
+            .padding()
         }
-        .padding()
 //        Spacer()
     }
     
@@ -72,7 +81,7 @@ struct Tasks: View {
                 }) {
                     Image(systemName: "chevron.right")
                         .rotationEffect(.degrees(isExpanded.wrappedValue ? 90 : 0))
-                        .foregroundColor(.blue)
+                        .foregroundColor(.accent)
                 }
                 .buttonStyle(PlainButtonStyle())
             }
@@ -93,9 +102,13 @@ struct Tasks: View {
             }
         }
         .padding()
-        .background(Color(UIColor.secondarySystemBackground))
+        .background(Color.primaryBackground)
         .cornerRadius(10)
         .shadow(radius: 2)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.accent, lineWidth: 1)
+        )
     }
 }
 

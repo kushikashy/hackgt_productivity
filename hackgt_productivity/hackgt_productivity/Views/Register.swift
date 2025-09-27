@@ -15,12 +15,13 @@ struct Register: View {
     @State private var name = ""
     @State private var navigateToDashboard = false
 
-    let skills = ["Swift", "Python", "Java", "JavaScript", "AI/ML", "UI/UX", "Blockchain"]
-    @State private var selectedSkills: Set<String> = []
+//    let skills = ["Swift", "Python", "Java", "JavaScript", "AI/ML", "UI/UX", "Blockchain"]
+//    @State private var selectedSkills: Set<String> = []
 
     var body: some View {
-        VStack {
-            NavigationStack {
+        NavigationStack {
+            ZStack {
+                Color.primaryBackground.ignoresSafeArea()
                 VStack(spacing: 20) {
                     TextField("Name", text: $name)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -96,8 +97,8 @@ struct Register: View {
                 NavigationLink(destination: DashboardNew().navigationBarBackButtonHidden(true), isActive: $navigateToDashboard) {
                     EmptyView()
                 }
+                .padding()
             }
-            .padding()
         }
     }
 }
