@@ -36,22 +36,9 @@
 		C4D5AFDA2E87693200623EA4 /* hackgt_productivity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hackgt_productivity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C427617E2E8788E300287001 /* Exceptions for "hackgt_productivity" folder in "hackgt_productivity" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Views/Untitled.swift,
-			);
-			target = C4D5AFD92E87693200623EA4 /* hackgt_productivity */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		C4D5AFDC2E87693200623EA4 /* hackgt_productivity */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				C427617E2E8788E300287001 /* Exceptions for "hackgt_productivity" folder in "hackgt_productivity" target */,
-			);
 			path = hackgt_productivity;
 			sourceTree = "<group>";
 		};
