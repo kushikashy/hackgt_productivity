@@ -8,7 +8,7 @@ import Foundation
 import SwiftUI
 
 struct Login: View {
-    @Environment(AuthenticationVM.self) private var authVM
+    @EnvironmentObject var authVM: AuthenticationVM
     @State private var email = ""
     @State private var password = ""
     
