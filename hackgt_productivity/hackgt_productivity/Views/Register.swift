@@ -35,44 +35,44 @@ struct Register: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 // Multi-select dropdown
-                Menu {
-                    ForEach(skills, id: \.self) { skill in
-                        Button(action: {
-                            if selectedSkills.contains(skill) {
-                                selectedSkills.remove(skill)
-                            } else {
-                                selectedSkills.insert(skill)
-                            }
-                        }) {
-                            HStack {
-                                Text(skill)
-                                if selectedSkills.contains(skill) {
-                                    Spacer()
-                                    Image(systemName: "checkmark")
-                                }
-                            }
-                        }
-                    }
-                } label: {
-                    HStack {
-                        Text(selectedSkills.isEmpty ? "Select Skills" : selectedSkills.joined(separator: ", "))
-                            .foregroundColor(selectedSkills.isEmpty ? .gray : .black)
-                        Spacer()
-                        Image(systemName: "chevron.down")
-                            .foregroundColor(.gray)
-                    }
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
-                }
-                
-                // Show error if registration fails
-                if let errorMessage = authVM.errorMessage {
-                    Text(errorMessage)
-                        .foregroundColor(.red)
-                }
+//                Menu {
+//                    ForEach(skills, id: \.self) { skill in
+//                        Button(action: {
+//                            if selectedSkills.contains(skill) {
+//                                selectedSkills.remove(skill)
+//                            } else {
+//                                selectedSkills.insert(skill)
+//                            }
+//                        }) {
+//                            HStack {
+//                                Text(skill)
+//                                if selectedSkills.contains(skill) {
+//                                    Spacer()
+//                                    Image(systemName: "checkmark")
+//                                }
+//                            }
+//                        }
+//                    }
+//                } label: {
+//                    HStack {
+//                        Text(selectedSkills.isEmpty ? "Select Skills" : selectedSkills.joined(separator: ", "))
+//                            .foregroundColor(selectedSkills.isEmpty ? .gray : .black)
+//                        Spacer()
+//                        Image(systemName: "chevron.down")
+//                            .foregroundColor(.gray)
+//                    }
+//                    .padding()
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 8)
+//                            .stroke(Color.gray, lineWidth: 1)
+//                    )
+//                }
+//                
+//                // Show error if registration fails
+//                if let errorMessage = authVM.errorMessage {
+//                    Text(errorMessage)
+//                        .foregroundColor(.red)
+//                }
                 
                 Button("Register") {
                     // Send selectedSkills to your VM if needed

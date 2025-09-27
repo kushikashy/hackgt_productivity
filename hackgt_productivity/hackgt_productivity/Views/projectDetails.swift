@@ -279,7 +279,7 @@ struct projectDetails: View {
                     }
 
                     // Create Project Button
-                    NavigationLink(destination: Dashboard(endDate: $endDate)) {
+                    NavigationLink(destination: MainTabView(endDate: endDate)) {
                         Text("Create New Project")
                             .font(.headline)
                             .padding()

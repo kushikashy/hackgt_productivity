@@ -134,6 +134,8 @@ struct Dashboard: View {
                 name = user.displayName ?? "No name set"
             }
         }.frame(maxWidth: .infinity, maxHeight: .infinity)
+        
+        
     }
 }
 
