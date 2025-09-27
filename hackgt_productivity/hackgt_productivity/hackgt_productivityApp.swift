@@ -30,6 +30,7 @@ struct YourApp: App {
           NavigationStack {
               Register()
                   .environmentObject(authVM)
+                  .tint(.accent)
           }
       }
   }

@@ -81,15 +81,23 @@ struct Register: View {
                         navigateToDashboard = true
                     }
                     
-                    NavigationStack {
-                        EmptyView()
-                            .navigationDestination(isPresented: $navigateToDashboard) {
-                                DashboardNew()
-                            }
-                    }
-                }
+//                     NavigationStack {
+//                         EmptyView()
+//                             .navigationDestination(isPresented: $navigateToDashboard) {
+//                                 DashboardNew()
+//                             }
+//                     }
+//                 }
+
                 .padding()
             }.padding(.top, 200)
+
+                
+                NavigationLink(destination: DashboardNew().navigationBarBackButtonHidden(true), isActive: $navigateToDashboard) {
+                    EmptyView()
+                }
+            }
+            .padding()
         }
     }
 }
