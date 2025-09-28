@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct Register: View {
+    @StateObject private var viewModel = RegistrationViewModel()
+    
     @EnvironmentObject var authVM: AuthenticationVM
     @State private var email = ""
     @State private var password = ""
@@ -78,6 +80,7 @@ struct Register: View {
                     Button("Register") {
                         // Send selectedSkills to your VM if needed
                         authVM.register(email: email, password: password, name: name, skills: Array(selectedSkills))
+                        viewModel.name = name
                         navigateToDashboard = true
                     }
                     
@@ -93,7 +96,7 @@ struct Register: View {
             }.padding(.top, 200)
 
                 
-                NavigationLink(destination: DashboardNew(viewModel: RegistrationViewModel()).navigationBarBackButtonHidden(true), isActive: $navigateToDashboard) {
+                NavigationLink(destination: DashboardNew(viewModel: viewModel).navigationBarBackButtonHidden(true), isActive: $navigateToDashboard) {
                     EmptyView()
                 }
             }
