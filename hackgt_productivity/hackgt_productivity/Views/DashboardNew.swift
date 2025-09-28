@@ -10,6 +10,7 @@ import SwiftUI
 struct DashboardNew: View {
     @State private var name: String = "No name set"
     @State private var authVM = AuthenticationVM()
+    @ObservedObject var viewModel: RegistrationViewModel
     
     var body: some View {
             NavigationStack {
@@ -24,7 +25,7 @@ struct DashboardNew: View {
                             .bold()
                             .foregroundStyle(Color.accent)
                         
-                        NavigationLink(destination: TeamSkills()) {
+                        NavigationLink(destination: TeamSkills(viewModel: viewModel)) {
                             Label("Add Project", systemImage: "plus")
                                 .font(.headline)
                                 .foregroundColor(.accent)
@@ -42,5 +43,5 @@ struct DashboardNew: View {
 }
 
 #Preview {
-    DashboardNew()
+    DashboardNew(viewModel: RegistrationViewModel())
 }
