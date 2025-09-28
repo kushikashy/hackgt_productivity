@@ -40,7 +40,7 @@ class AuthenticationVM: ObservableObject {
         }
     }
     
-    func register(email: String, password: String, name: String, skills: [String]) {
+    func register(email: String, password: String, name: String) {
         isLoading = true
         auth.createUser(withEmail: email, password: password) { result, error in
             DispatchQueue.main.async {
@@ -75,7 +75,6 @@ class AuthenticationVM: ObservableObject {
             self.db.collection("users").document(user.uid).setData([
                 "name": name,
                 "email": email,
-                "skills": skills
             ]) { error in
                 if let error = error {
                     DispatchQueue.main.async {
@@ -86,7 +85,6 @@ class AuthenticationVM: ObservableObject {
                     DispatchQueue.main.async {
                         self.isLoggedIn = true
                         self.currentUser = user
-                        print("Skills saved for user: \(skills)")
                     }
                 }
             }

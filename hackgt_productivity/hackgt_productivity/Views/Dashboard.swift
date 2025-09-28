@@ -216,6 +216,8 @@ struct Dashboard: View {
     
     // MARK: - Add ViewModel here
     @StateObject private var viewModel = ProjectViewModel()  // Create and observe the view model
+    @State private var authVM = AuthenticationVM()
+    @State private var role: String = "No role set"
     
     // Example tasks array
     @State private var tasks: [String] = [
@@ -238,6 +240,10 @@ struct Dashboard: View {
                     .bold()
                     .padding(.leading, 10)
                     .foregroundStyle(Color.accent)
+                Text("\(role)")
+                    .font(.title)
+                    .foregroundStyle(Color.accent)
+                    .padding(.leading, 10)
                 
                 // Countdown
                 RoundedRectangle(cornerRadius: 20)
