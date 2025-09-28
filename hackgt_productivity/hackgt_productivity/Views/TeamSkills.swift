@@ -660,7 +660,18 @@ struct TeamSkills: View {
                     }
                 }
                 Spacer()
-                NavigationLink(destination: projectDetails()) {
+//                NavigationLink(destination: projectDetails(viewModel: RegistrationViewModel())) {
+//                    Text("Next")
+//                        .font(.headline)
+//                        .foregroundColor(.accent)
+//                        .padding()
+//                        .background(Color.primaryText)
+//                        .cornerRadius(10)
+//                }
+                Button(action: {
+                    syncToViewModel()
+                    goToNext = true
+                }) {
                     Text("Next")
                         .font(.headline)
                         .foregroundColor(.accent)
@@ -670,18 +681,18 @@ struct TeamSkills: View {
                 }
             }
         }
-        Spacer()
-        Button(action: {
-            syncToViewModel()
-            goToNext = true
-        }) {
-            Text("Next")
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .background(Color.blue)
-                .cornerRadius(10)
-        }
+//        Spacer()
+//        Button(action: {
+//            syncToViewModel()
+//            goToNext = true
+//        }) {
+//            Text("Next")
+//                .font(.headline)
+//                .foregroundColor(.accent)
+//                .padding()
+//                .background(Color.primaryText)
+//                .cornerRadius(10)
+//        }
 
         // NavigationLink to projectDetails
         NavigationLink(destination: projectDetails(viewModel: viewModel), isActive: $goToNext) {
