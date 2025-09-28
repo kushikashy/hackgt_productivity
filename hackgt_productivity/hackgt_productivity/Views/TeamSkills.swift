@@ -9,8 +9,8 @@ import SwiftUI
 
 struct TeamSkills: View {
     
-    let languages = ["Swift", "Python", "Java", "JavaScript"]
-    let skills = ["Front End", "Back End", "Mobile", "Data Science", "DevOps"]
+    let languages = ["JavaScript", "TypeScript", "HTML/CSS", "React", "Java", "Python", "Node.js", "Ruby", "SQL", "Shell/Bash", "Docker", "Swift", "Kotlin", "R", "C++", "C", "Assembly", "Rust", "MATLAB", "Go", "C#", "Kubernetes"]
+    let skills = ["UI", "Optimization", "User Interaction", "DevOps", "Data", "Security", "API", "Animation", "Design", "Integration", "Error Handling", "Navigation", "Storage", "Automation", "AI", "Evaluation", "Hardware", "Sensors", "Circuit", "Power", "CAD", "Prototyping", "Physical Testing", "Blockchain", "Configuration", "Real-Time Systems", "Networking", "Monitoring", "Testing", "Version Control"]
     @State private var userL: Set<String> = []
     @State private var userS: Set<String> = []
     @State private var teammateOneL: Set<String> = []
@@ -40,10 +40,10 @@ struct TeamSkills: View {
                         ForEach(skills, id: \.self) { skill in
                             Button(action: {
                                 if userS.contains(skill) {
-                                    userS.remove(skill)
-                                } else {
-                                    userS.insert(skill)
-                                }
+                                                    userS.remove(skill) // deselect
+                                                } else if userS.count < 3 {
+                                                    userS.insert(skill)
+                                                }
                             }) {
                                 HStack {
                                     Text(skill)
@@ -75,10 +75,10 @@ struct TeamSkills: View {
                         ForEach(languages, id: \.self) { language in
                             Button(action: {
                                 if userL.contains(language) {
-                                    userL.remove(language)
-                                } else {
-                                    userL.insert(language)
-                                }
+                                                    userL.remove(language) // deselect
+                                                } else if userL.count < 3 {
+                                                    userL.insert(language)
+                                                }
                             }) {
                                 HStack {
                                     Text(language)
@@ -116,10 +116,10 @@ struct TeamSkills: View {
                         ForEach(skills, id: \.self) { skill in
                             Button(action: {
                                 if teammateOneS.contains(skill) {
-                                    teammateOneS.remove(skill)
-                                } else {
-                                    teammateOneS.insert(skill)
-                                }
+                                                    teammateOneS.remove(skill) // deselect
+                                                } else if teammateOneS.count < 3 {
+                                                    teammateOneS.insert(skill)
+                                                }
                             }) {
                                 HStack {
                                     Text(skill)
@@ -151,10 +151,10 @@ struct TeamSkills: View {
                         ForEach(languages, id: \.self) { language in
                             Button(action: {
                                 if teammateOneL.contains(language) {
-                                    teammateOneL.remove(language)
-                                } else {
-                                    teammateOneL.insert(language)
-                                }
+                                                    teammateOneL.remove(language) // deselect
+                                                } else if teammateOneL.count < 3 {
+                                                    teammateOneL.insert(language)
+                                                }
                             }) {
                                 HStack {
                                     Text(language)
@@ -186,10 +186,10 @@ struct TeamSkills: View {
                         ForEach(skills, id: \.self) { skill in
                             Button(action: {
                                 if teammateTwoS.contains(skill) {
-                                    teammateTwoS.remove(skill)
-                                } else {
-                                    teammateTwoS.insert(skill)
-                                }
+                                                    teammateTwoS.remove(skill) // deselect
+                                                } else if teammateTwoS.count < 3 {
+                                                    teammateTwoS.insert(skill)
+                                                }
                             }) {
                                 HStack {
                                     Text(skill)
@@ -221,10 +221,10 @@ struct TeamSkills: View {
                         ForEach(languages, id: \.self) { language in
                             Button(action: {
                                 if teammateTwoL.contains(language) {
-                                    teammateTwoL.remove(language)
-                                } else {
-                                    teammateTwoL.insert(language)
-                                }
+                                                    teammateTwoL.remove(language) // deselect
+                                                } else if teammateTwoL.count < 3 {
+                                                    teammateTwoL.insert(language)
+                                                }
                             }) {
                                 HStack {
                                     Text(language)
@@ -256,10 +256,10 @@ struct TeamSkills: View {
                         ForEach(skills, id: \.self) { skill in
                             Button(action: {
                                 if teammateThreeS.contains(skill) {
-                                    teammateThreeS.remove(skill)
-                                } else {
-                                    teammateThreeS.insert(skill)
-                                }
+                                                    teammateThreeS.remove(skill) // deselect
+                                                } else if teammateThreeS.count < 3 {
+                                                    teammateThreeS.insert(skill)
+                                                }
                             }) {
                                 HStack {
                                     Text(skill)
@@ -291,10 +291,10 @@ struct TeamSkills: View {
                         ForEach(languages, id: \.self) { language in
                             Button(action: {
                                 if teammateThreeL.contains(language) {
-                                    teammateThreeL.remove(language)
-                                } else {
-                                    teammateThreeL.insert(language)
-                                }
+                                                    teammateThreeL.remove(language) // deselect
+                                                } else if teammateThreeL.count < 3 {
+                                                    teammateThreeL.insert(language)
+                                                }
                             }) {
                                 HStack {
                                     Text(language)
