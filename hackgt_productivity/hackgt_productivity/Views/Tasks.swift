@@ -7,27 +7,13 @@
 
 import SwiftUI
 
-
 struct Tasks: View {
-    @State private var myTasks: [String] = [
-        "Buy groceries",
-        "Finish homework",
-        "Call Alice"
-    ]
-    
-    @State private var allTasks: [String] = [
-        "Buy groceries",
-        "Finish homework",
-        "Call Alice",
-        "Read book",
-        "Meditate",
-        "Go for a walk",
-        "Finish HW"
-    ]
-    
+    @State private var myTasks: [String] = []
+    @State private var allTasks: [String] = []
+
     @State private var isMyTasksExpanded: Bool = false
     @State private var isAllTasksExpanded: Bool = false
-    
+
     var body: some View {
         ZStack {
             Color.primaryBackground.ignoresSafeArea()
@@ -37,29 +23,57 @@ struct Tasks: View {
                     .bold()
                     .padding(.leading, 10)
                     .foregroundStyle(Color.accent)
-                // MARK: My Tasks
+
                 collapsibleSection(
                     title: "My Tasks",
                     tasks: myTasks,
                     isExpanded: $isMyTasksExpanded
                 )
                 .foregroundStyle(Color.accent)
-                
-                // MARK: All Tasks
+
                 collapsibleSection(
                     title: "All Tasks",
                     tasks: allTasks,
                     isExpanded: $isAllTasksExpanded
                 )
                 .foregroundStyle(Color.accent)
+
                 Spacer()
             }
             .padding()
+            .onAppear {
+                fetchTasks()
+            }
         }
-//        Spacer()
     }
-    
-    // Reusable collapsible section
+
+    private func fetchTasks() {
+        let teamMembers = [
+            TeamMember(name: "User", skills: ["SwiftUI", "UI/UX"]),
+            TeamMember(name: "Teammember 1", skills: ["Python", "Backend"]),
+            TeamMember(name: "Teammember 2", skills: ["ML", "AI"]),
+            TeamMember(name: "Teammember 3", skills: ["DevOps", "Infra"])
+        ]
+
+        APIService.shared.generateWorkflow(
+            projectName: "Hackathon App",
+            projectType: "Social Fitness Tracker",
+            teamMembers: teamMembers,
+            timeRemaining: "24h",
+            featureSummary: "User authentication, activity tracking, goal setting, GPS mapping, push notifications"
+        ) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let workflow):
+                    self.myTasks = workflow.my_tasks
+                    self.allTasks = workflow.all_tasks
+                case .failure(let error):
+                    print("❌ Error fetching workflow: \(error)")
+                }
+            }
+        }
+    }
+
     @ViewBuilder
     private func collapsibleSection(
         title: String,
@@ -71,13 +85,11 @@ struct Tasks: View {
                 Text(title)
                     .font(.title2)
                     .bold()
-                
+
                 Spacer()
-                
+
                 Button(action: {
-                    withAnimation {
-                        isExpanded.wrappedValue.toggle()
-                    }
+                    withAnimation { isExpanded.wrappedValue.toggle() }
                 }) {
                     Image(systemName: "chevron.right")
                         .rotationEffect(.degrees(isExpanded.wrappedValue ? 90 : 0))
@@ -85,7 +97,7 @@ struct Tasks: View {
                 }
                 .buttonStyle(PlainButtonStyle())
             }
-            
+
             if isExpanded.wrappedValue {
                 ScrollView(.vertical, showsIndicators: true) {
                     VStack(alignment: .leading, spacing: 5) {
@@ -95,9 +107,8 @@ struct Tasks: View {
                                 .padding(.leading, 15)
                         }
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .frame(height: 150) // can tweak per section
+                .frame(height: 150)
                 .transition(.opacity.combined(with: .move(edge: .top)))
             }
         }
@@ -110,14 +121,4 @@ struct Tasks: View {
                 .stroke(Color.accent, lineWidth: 1)
         )
     }
-}
-
-struct Tasks_Previews: PreviewProvider {
-    static var previews: some View {
-        Tasks()
-    }
-}
-
-#Preview {
-    Tasks()
 }

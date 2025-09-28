@@ -80,7 +80,7 @@ struct Register: View {
                     
                     Button("Register") {
                         // Send selectedSkills to your VM if needed
-                        authVM.register(email: email, password: password, name: name, skills: Array(selectedSkills))
+                        authVM.register(email: email, password: password, name: name)
                         viewModel.name = name
                         navigateToDashboard = true
                     }
