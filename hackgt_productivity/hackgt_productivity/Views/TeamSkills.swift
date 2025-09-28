@@ -660,7 +660,10 @@ struct TeamSkills: View {
                     }
                 }
                 Spacer()
-                NavigationLink(destination: projectDetails()) {
+                Button(action: {
+                    syncToViewModel()
+                    goToNext = true
+                }) {
                     Text("Next")
                         .font(.headline)
                         .foregroundColor(.accent)
@@ -669,18 +672,6 @@ struct TeamSkills: View {
                         .cornerRadius(10)
                 }
             }
-        }
-        Spacer()
-        Button(action: {
-            syncToViewModel()
-            goToNext = true
-        }) {
-            Text("Next")
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding()
-                .background(Color.blue)
-                .cornerRadius(10)
         }
 
         // NavigationLink to projectDetails
